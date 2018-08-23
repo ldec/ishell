@@ -114,5 +114,8 @@ class Command(Console):
         print("\nIncomplete Command: %s\n" % line)
         self.print_childs_help()
 
+    def on_loop_exit(self):
+        print("exit")
+
     def __repr__(self):
         return "<Command:(%s), Childs(%s)>" % (self.name, "-".join(self.childs))

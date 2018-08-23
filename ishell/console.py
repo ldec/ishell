@@ -76,6 +76,9 @@ class Console(object):
     def exit(self):
         self._exit = True
 
+    def on_loop_exit(self):
+        print("exit")
+
     def loop(self):
         previous_completer = readline.get_completer()
         readline.parse_and_bind("tab: complete")
@@ -100,7 +103,7 @@ class Console(object):
                 else:
                     self.walk_and_run(input_)
             except (KeyboardInterrupt, EOFError):
-                print("exit")
+                self.on_loop_exit()
                 break
 
             except Exception:
